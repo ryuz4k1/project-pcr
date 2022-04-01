@@ -1,0 +1,39 @@
+<div class="p-5" style="height: 100%; background: #f7f7f7;">
+    <h1> {{ 'PCR REGION COVERAGE' }} </h1>
+    <div class="container">
+        <!-- {{ pcrList$ | async | json }} -->
+        <nz-table
+            [nzPageSize]="(pcrList$ |async)?.pagination?.pagination_size"
+            [nzPageIndex]="(pcrList$ |async)?.pagination?.current_page_number"
+            [nzFrontPagination]="false"
+            [nzTotal]="(pcrList$ |async)?.pagination?.total_item_count" 
+            (nzPageSizeChange)="triggerPageSize($event)"
+            (nzPageIndexChange)="triggerPageIndex($event)"
+            #rowSelectionTable
+            [nzLoading]="loading$ | async"
+            [nzShowSizeChanger]="true"
+            [nzScroll]="{ y: '550px' }"
+            [nzData]="(pcrList$ |async)?.items">
+            <thead>
+                <tr>
+                    <th> {{ 'Name' }} </th>
+                    <th> {{ 'Chromosome:Start-End' }} </th>
+                    <th> {{ 'Minimum Count' }} </th>
+                    <th> {{ 'Maximum Count' }} </th>
+                    <th> {{ 'Percentage' }} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of rowSelectionTable.data; trackBy: trackByLogs;" [class.isCache]="item.id != cacheId">
+                    <td>{{ item?.name || '-' }}</td>
+                    <td>{{ (item?.chromosome + ':' + item?.start + '-' + item?.end) || '-' }}</td>
+                    <td>{{ item?.start || '-' }}</td>
+                    <td>{{ item?.end }}</td>
+                    <td>
+                        <app-progress-bar [percentage]="item?.percentage" color="primary"></app-progress-bar>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

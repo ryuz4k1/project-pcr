@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  angular-service:
+    build: .
+    command: sh -c "npm install -g @angular/cli && npm start"
+    ports:
+      - 4200:4200
+    working_dir: /home/node/app
+    volumes:
+      - ./:/var/www/app
+      - /var/www/app/node_modules/

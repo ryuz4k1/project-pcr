@@ -1,0 +1,52 @@
+$color-primary: #43d2b2;
+$color-secondary: #489DBA;
+$color-contrast: #9195A4;
+$color-soft-contrast: #f7f7f7;
+$color-error: #FB5151;
+$color-warn: #f8e71c;
+$color-list-item: #585a64;
+$color-shade: #D8D8D8;
+
+:host {
+  // display: block;
+  // border-radius: 8px;
+  // background-color: $color-soft-contrast;
+  // height: 16px;
+  // position: relative;
+  // overflow: hidden;
+
+  &[color="primary"] {
+    .progress-bar {
+      div {
+        border-radius: 8px;
+        background-color: var(--color, #{$color-primary});;
+      }
+      
+    }
+  }
+
+  &[color="secondary"] {
+    div {
+      background-color: var(--color, #{$color-secondary});;
+    }
+  }
+
+  &[color="error"] {
+    div {
+      background-color: var(--color, #{$color-error});;
+    }
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  background-color: var(--color, #{$color-soft-contrast});
+  height: 20px;
+  overflow: hidden;
+
+  div {
+    height: 100%;
+  }
+}

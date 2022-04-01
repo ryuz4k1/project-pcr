@@ -1,0 +1,46 @@
+$color-primary: #43d2b2;
+$color-secondary: #489DBA;
+$color-contrast: #9195A4;
+$color-soft-contrast: #f7f7f7;
+$color-error: #FB5151;
+$color-warn: #f8e71c;
+$color-list-item: #585a64;
+$color-shade: #D8D8D8;
+
+nz-table {
+    ::ng-deep .ant-table-small {
+        border: none;
+        // color: $color-soft-contrast;
+    }
+
+    ::ng-deep thead {
+        th {
+            background: $color-primary;
+            color: white;
+            text-align: center;
+            border: none;
+            height: 50px;
+        }
+    }
+
+    ::ng-deep tbody {
+
+        td {
+            text-align: center;
+            border-bottom: 1px solid rgba(151, 151, 151, 0.5);
+        }
+    }
+
+    .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td {
+        background: transparent;
+    }
+
+    ::ng-deep .ant-table-placeholder {
+        background: transparent;
+        border: none;
+
+        .ant-empty-description {
+            color: #fff;
+        }
+    }
+}
